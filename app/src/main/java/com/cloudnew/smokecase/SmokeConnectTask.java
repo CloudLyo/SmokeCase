@@ -13,7 +13,6 @@ import java.net.Socket;
 import java.net.SocketAddress;
 
 import util.FROSmoke;
-import util.RunWithTimeout;
 import util.StreamUtil;
 
 /**
@@ -25,12 +24,9 @@ public class SmokeConnectTask extends AsyncTask<Void,Void,Void> {
     private Context context;
     private SmokeData data;
     private Float smoke;
-
     private byte[] read_buff;
-
     private TextView smoke_tv;
     String smoke_text = "连接中";
-
     private Socket mSocket;
     private SocketAddress mSocketAddress;
     private InputStream inputStream;
