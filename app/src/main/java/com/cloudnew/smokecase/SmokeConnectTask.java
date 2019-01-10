@@ -83,8 +83,7 @@ public class SmokeConnectTask extends AsyncTask<Void,Void,Void> {
         while (CIRCLE) {
             // 查询烟雾值
             try {
-
-                Log.d("TAG","writing");
+                //Log.d("TAG","writing");
                 new Thread(new Runnable() {
                     @Override
                     public void run() {
@@ -92,9 +91,9 @@ public class SmokeConnectTask extends AsyncTask<Void,Void,Void> {
                     }
                 }).start();
                 Thread.sleep(200);
-                Log.d("TAG","reading");
+                //Log.d("TAG","reading");
                 read_buff = StreamUtil.readData(inputStream);
-                Log.d("TAG","complete "+new String(read_buff));
+                //Log.d("TAG","complete "+new String(read_buff));
 
                 smoke = FROSmoke.getData(Constant.SMOKE_LEN, Constant.SMOKE_NUM, read_buff);
                 if (smoke != null) {
@@ -104,13 +103,20 @@ public class SmokeConnectTask extends AsyncTask<Void,Void,Void> {
                     continue;
                 }
                 // 更新界面
-                Log.d("TAG",data.getSun()+"$");
+                //Log.d("TAG",data.getSun()+"$");
                 smoke_text = data.getSun()+"";
                 publishProgress();
                 Thread.sleep(200);
             } catch (InterruptedException e) {
                 e.printStackTrace();
-                while (!isSuccess()){
+                while(!isSuccess()){
+                    if (mSocket!=null) {
+                        try {
+                            mSocket.close();
+                        } catch (IOException e1) {
+                            e.printStackTrace();
+                        }
+                    }
                     connect();
                 }
                 continue;

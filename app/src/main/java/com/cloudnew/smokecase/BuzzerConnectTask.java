@@ -69,6 +69,8 @@ public class BuzzerConnectTask extends AsyncTask<Void, Void, Void> {
 			btn_text = "报警";
 			publishProgress();
 			Thread.sleep(200);
+			((HomeActivity)context).buzzerControlTask = new BuzzerControlTask(context,((HomeActivity)context).tv_tem,((HomeActivity)context).tv_hum,((HomeActivity)context).tv_smoke,((HomeActivity)context).btn_baojing,getInputStream(),getOutputStream());
+			((HomeActivity)context).buzzerControlTask.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}
@@ -78,7 +80,7 @@ public class BuzzerConnectTask extends AsyncTask<Void, Void, Void> {
 	public void connect(){
 		btn_text = "连接中";
 		publishProgress();
-
+		if (mSocket==null||mSocket.isClosed()) mSocket = new Socket();
 		try {
 			mSocket.connect(mSocketAddress, 3000);// 设置连接超时时间为3秒
 			mSocket.setSoTimeout(1000);

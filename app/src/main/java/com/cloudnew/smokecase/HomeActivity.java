@@ -20,6 +20,7 @@ public class HomeActivity extends AppCompatActivity {
     TemHumConnectTask temHumConnectTask;
     SmokeConnectTask smokeConnectTask;
     BuzzerConnectTask buzzerConnectTask;
+    public BuzzerControlTask buzzerControlTask;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -43,7 +44,6 @@ public class HomeActivity extends AppCompatActivity {
         buzzerConnectTask = new BuzzerConnectTask(this,btn_baojing);
         buzzerConnectTask.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
 
-
     }
 
     void initview(){
@@ -51,8 +51,7 @@ public class HomeActivity extends AppCompatActivity {
         btn_baojing.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                BuzzerControlTask buzzerControlTask = new BuzzerControlTask(HomeActivity.this,buzzerConnectTask.getInputStream(),buzzerConnectTask.getOutputStream(),Constant.BUZZER_CMD);
-                buzzerControlTask.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
+
             }
         });
     }

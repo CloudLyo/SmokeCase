@@ -103,7 +103,16 @@ public class TemHumConnectTask extends AsyncTask<Void,Void,Void> {
                 if (dataTemp != null) {
                     data.setTem((int)(float)dataTemp);
                 }else{
-                    while (!isSuccess()) connect();
+                    while(!isSuccess()){
+                        if (mSocket!=null) {
+                            try {
+                                mSocket.close();
+                            } catch (IOException e) {
+                                e.printStackTrace();
+                            }
+                        }
+                        connect();
+                    }
                     continue;
                 }
                 dataTemp = FROTemHum.getHumData(Constant.TEMHUM_LEN, Constant.TEMHUM_NUM, read_buff);
@@ -121,9 +130,15 @@ public class TemHumConnectTask extends AsyncTask<Void,Void,Void> {
             } catch (InterruptedException e) {
                 e.printStackTrace();
                 while(!isSuccess()){
+                    if (mSocket!=null) {
+                        try {
+                            mSocket.close();
+                        } catch (IOException e1) {
+                            e1.printStackTrace();
+                        }
+                    }
                     connect();
-                }
-                continue;
+                }continue;
             }
         }
         return null;
