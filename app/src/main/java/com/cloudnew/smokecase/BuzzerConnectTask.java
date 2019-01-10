@@ -64,6 +64,13 @@ public class BuzzerConnectTask extends AsyncTask<Void, Void, Void> {
 		try {
 			// socket连接
 			while(!isSuccess()){
+				if (mSocket!=null) {
+					try {
+						mSocket.close();
+					} catch (IOException e) {
+						e.printStackTrace();
+					}
+				}
 				connect();
 			}
 			btn_text = "报警";

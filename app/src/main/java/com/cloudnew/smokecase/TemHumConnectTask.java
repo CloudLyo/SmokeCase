@@ -90,7 +90,6 @@ public class TemHumConnectTask extends AsyncTask<Void,Void,Void> {
         while (CIRCLE) {
             // 查询温湿度
             try{
-
                 new Thread(new Runnable() {
                     @Override
                     public void run() {

@@ -68,8 +68,8 @@ public class SmokeConnectTask extends AsyncTask<Void,Void,Void> {
      */
     @Override
     protected Void doInBackground(Void... params) {
-        mSocketAddress = new InetSocketAddress(Constant.SMOKE_IP, Constant.SMOKE_port);
         mSocket = new Socket();
+        mSocketAddress = new InetSocketAddress(Constant.SMOKE_IP, Constant.SMOKE_port);
         while(!isSuccess()){
             if (mSocket!=null) {
                 try {
