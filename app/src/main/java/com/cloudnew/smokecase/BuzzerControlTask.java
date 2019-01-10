@@ -57,12 +57,23 @@ public class BuzzerControlTask extends AsyncTask<Void, Void, Void> {
 			//读取返回值
 			read_buff = StreamUtil.readData(inputStream);
 			// 如果设备无返回值，直接返回null
-			if(read_buff==null || read_buff.length<Constant.NODE_LEN)return null;
+			if(read_buff==null || read_buff.length<Constant.NODE_LEN) return null;
 			//判断是否操作成功
 			statu = FROIOControl.isSuccess(Constant.NODE_LEN, Constant.NODE_NUM, read_buff);
 			// 更新界面
 			publishProgress();
-			Thread.sleep(100);
+			Thread.sleep(1000);
+
+			StreamUtil.writeCommand(outputStream, Constant.CLOSEALL_CMD);
+			Thread.sleep(200);
+			//读取返回值
+			read_buff = StreamUtil.readData(inputStream);
+			// 如果设备无返回值，直接返回null
+			if(read_buff==null || read_buff.length<Constant.NODE_LEN) return null;
+			//判断是否操作成功
+			statu = FROIOControl.isSuccess(Constant.NODE_LEN, Constant.NODE_NUM, read_buff);
+			// 更新界面
+			publishProgress();
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}

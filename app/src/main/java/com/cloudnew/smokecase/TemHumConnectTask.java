@@ -91,9 +91,14 @@ public class TemHumConnectTask extends AsyncTask<Void,Void,Void> {
             // 查询温湿度
             try{
 
-                StreamUtil.writeCommand(outputStream, Constant.TEMHUM_CHK);
+                new Thread(new Runnable() {
+                    @Override
+                    public void run() {
+                        StreamUtil.writeCommand(outputStream, Constant.TEMHUM_CHK);
+                    }
+                }).start();
+                Thread.sleep(200);
                 read_buff = StreamUtil.readData(inputStream);
-
                 dataTemp = FROTemHum.getTemData(Constant.TEMHUM_LEN, Constant.TEMHUM_NUM, read_buff);
                 if (dataTemp != null) {
                     data.setTem((int)(float)dataTemp);

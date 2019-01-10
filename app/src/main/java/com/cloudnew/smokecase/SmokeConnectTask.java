@@ -91,10 +91,10 @@ public class SmokeConnectTask extends AsyncTask<Void,Void,Void> {
                         StreamUtil.writeCommand(outputStream, Constant.SMOKE_CHK);
                     }
                 }).start();
+                Thread.sleep(200);
                 Log.d("TAG","reading");
-                read_buff = new byte[1024];
                 read_buff = StreamUtil.readData(inputStream);
-                Log.d("TAG","complete");
+                Log.d("TAG","complete "+new String(read_buff));
 
                 smoke = FROSmoke.getData(Constant.SMOKE_LEN, Constant.SMOKE_NUM, read_buff);
                 if (smoke != null) {
@@ -104,6 +104,7 @@ public class SmokeConnectTask extends AsyncTask<Void,Void,Void> {
                     continue;
                 }
                 // 更新界面
+                Log.d("TAG",data.getSun()+"$");
                 smoke_text = data.getSun()+"";
                 publishProgress();
                 Thread.sleep(200);
