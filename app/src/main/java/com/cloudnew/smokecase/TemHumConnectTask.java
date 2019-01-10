@@ -58,14 +58,12 @@ public class TemHumConnectTask extends AsyncTask<Void,Void,Void> {
         tem_tv.setText(tem_text);
         hum_tv.setText(hum_text);
     }
-
     /**
      * 准备
      */
     @Override
     protected void onPreExecute() {
     }
-
     /**
      * 子线程任务
      *
@@ -76,7 +74,7 @@ public class TemHumConnectTask extends AsyncTask<Void,Void,Void> {
     protected Void doInBackground(Void... params) {
         mSocketAddress = new InetSocketAddress(Constant.TEMHUM_IP, Constant.TEMHUM_port);
         mSocket = new Socket();
-        while(!isSuccess()){
+        while(!isSuccess()&&CIRCLE){
             if (mSocket!=null) {
                 try {
                     mSocket.close();
@@ -102,7 +100,7 @@ public class TemHumConnectTask extends AsyncTask<Void,Void,Void> {
                 if (dataTemp != null) {
                     data.setTem((int)(float)dataTemp);
                 }else{
-                    while(!isSuccess()){
+                    while(!isSuccess()&&CIRCLE){
                         if (mSocket!=null) {
                             try {
                                 mSocket.close();
@@ -128,12 +126,12 @@ public class TemHumConnectTask extends AsyncTask<Void,Void,Void> {
                 Thread.sleep(200);
             } catch (InterruptedException e) {
                 e.printStackTrace();
-                while(!isSuccess()){
+                while(!isSuccess()&&CIRCLE){
                     if (mSocket!=null) {
                         try {
                             mSocket.close();
                         } catch (IOException e1) {
-                            e1.printStackTrace();
+                            e.printStackTrace();
                         }
                     }
                     connect();

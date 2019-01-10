@@ -31,7 +31,6 @@ public class SmokeConnectTask extends AsyncTask<Void,Void,Void> {
     private SocketAddress mSocketAddress;
     private InputStream inputStream;
     private OutputStream outputStream;
-
     private Boolean STATU = false;
     private Boolean CIRCLE = false;
 
@@ -66,7 +65,7 @@ public class SmokeConnectTask extends AsyncTask<Void,Void,Void> {
     protected Void doInBackground(Void... params) {
         mSocket = new Socket();
         mSocketAddress = new InetSocketAddress(Constant.SMOKE_IP, Constant.SMOKE_port);
-        while(!isSuccess()){
+        while(!isSuccess()&&CIRCLE){
             if (mSocket!=null) {
                 try {
                     mSocket.close();
@@ -95,7 +94,16 @@ public class SmokeConnectTask extends AsyncTask<Void,Void,Void> {
                 if (smoke != null) {
                     data.setSun((int)(float)smoke);
                 }else{
-                    while (!isSuccess()) connect();
+                    while(!isSuccess()&&CIRCLE){
+                        if (mSocket!=null) {
+                            try {
+                                mSocket.close();
+                            } catch (IOException e) {
+                                e.printStackTrace();
+                            }
+                        }
+                        connect();
+                    }
                     continue;
                 }
                 // 更新界面
@@ -105,7 +113,7 @@ public class SmokeConnectTask extends AsyncTask<Void,Void,Void> {
                 Thread.sleep(200);
             } catch (InterruptedException e) {
                 e.printStackTrace();
-                while(!isSuccess()){
+                while(!isSuccess()&&CIRCLE){
                     if (mSocket!=null) {
                         try {
                             mSocket.close();

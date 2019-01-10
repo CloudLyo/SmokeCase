@@ -29,15 +29,15 @@
                     android:text="实时监控"
                     android:gravity="center"
                     android:textSize="30sp"/>
-                <Button
-                    android:id="@+id/btn_baojing"
-                    android:layout_width="80dp"
-                    android:layout_height="30dp"
-                    android:layout_gravity="right"
-                    android:layout_marginTop="7dp"
-                    android:layout_marginRight="5dp"
-                    android:text="报警"
-                    android:background="#FF0000"/>
+                <!--<Button-->
+                    <!--android:id="@+id/btn_baojing"-->
+                    <!--android:layout_width="80dp"-->
+                    <!--android:layout_height="30dp"-->
+                    <!--android:layout_gravity="right"-->
+                    <!--android:layout_marginTop="7dp"-->
+                    <!--android:layout_marginRight="5dp"-->
+                    <!--android:text="报警"-->
+                    <!--android:background="#FF0000"/>-->
             </FrameLayout>
 
             <ImageView
@@ -178,17 +178,21 @@
                     android:text="IP:"
                     android:textSize="20sp"/>
                 <EditText
+                    android:id="@+id/etv_smoke_ip"
                     android:layout_width="160dp"
                     android:layout_height="wrap_content"
-                    android:textSize="20sp"/>
+                    android:textSize="20sp"
+                    android:gravity="center_horizontal"/>
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Port"
                     android:textSize="20sp"/>
                 <EditText
+                    android:id="@+id/etv_smoke_port"
                     android:layout_width="70dp"
-                    android:layout_height="wrap_content" />
+                    android:layout_height="wrap_content"
+                    android:gravity="center_horizontal"/>
             </LinearLayout>
             <TextView
                 android:layout_width="match_parent"
@@ -204,17 +208,21 @@
                     android:text="IP:"
                     android:textSize="20sp"/>
                 <EditText
+                    android:id="@+id/etv_temhum_ip"
                     android:layout_width="160dp"
                     android:layout_height="wrap_content"
-                    android:textSize="20sp"/>
+                    android:textSize="20sp"
+                    android:gravity="center_horizontal"/>
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Port"
                     android:textSize="20sp"/>
                 <EditText
+                    android:id="@+id/etv_temhum_port"
                     android:layout_width="70dp"
-                    android:layout_height="wrap_content" />
+                    android:layout_height="wrap_content"
+                    android:gravity="center_horizontal"/>
             </LinearLayout>
             <TextView
                 android:layout_width="match_parent"
@@ -231,16 +239,20 @@
                     android:text="烟雾值:"
                     android:textSize="20sp"/>
                 <EditText
+                    android:id="@+id/etv_smoke_down"
                     android:layout_width="40dp"
-                    android:layout_height="wrap_content" />
+                    android:layout_height="wrap_content"
+                    android:gravity="center_horizontal"/>
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="~"
                     android:textSize="20sp"/>
                 <EditText
+                    android:id="@+id/etv_smoke_up"
                     android:layout_width="40dp"
-                    android:layout_height="wrap_content" />
+                    android:layout_height="wrap_content"
+                    android:gravity="center_horizontal"/>
             </LinearLayout>
             <LinearLayout
                 android:layout_width="match_parent"
@@ -251,16 +263,20 @@
                     android:text="温度:"
                     android:textSize="20sp"/>
                 <EditText
+                    android:id="@+id/etv_tem_down"
                     android:layout_width="40dp"
-                    android:layout_height="wrap_content" />
+                    android:layout_height="wrap_content"
+                    android:gravity="center_horizontal"/>
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="~"
                     android:textSize="20sp"/>
                 <EditText
+                    android:id="@+id/etc_tem_up"
                     android:layout_width="40dp"
-                    android:layout_height="wrap_content" />
+                    android:layout_height="wrap_content"
+                    android:gravity="center_horizontal"/>
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -268,19 +284,24 @@
                     android:textSize="20sp"
                     android:layout_marginLeft="20dp"/>
                 <EditText
+                    android:id="@+id/etv_hum_down"
                     android:layout_width="40dp"
-                    android:layout_height="wrap_content" />
+                    android:layout_height="wrap_content"
+                    android:gravity="center_horizontal"/>
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="~"
                     android:textSize="20sp"/>
                 <EditText
+                    android:id="@+id/etv_hum_up"
                     android:layout_width="40dp"
-                    android:layout_height="wrap_content" />
+                    android:layout_height="wrap_content"
+                    android:gravity="center_horizontal"/>
             </LinearLayout>
 
             <Button
+                android:id="@+id/btn_apply"
                 android:layout_width="100dp"
                 android:layout_height="40dp"
                 android:text="应用"

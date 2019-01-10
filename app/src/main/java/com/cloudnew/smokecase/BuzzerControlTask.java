@@ -43,11 +43,6 @@ public class BuzzerControlTask extends AsyncTask<Void, Void, Void> {
 	 */
 	@Override
 	protected void onProgressUpdate(Void... values) {
-		if (statu == true) {
-			Toast.makeText(context, "操作成功！", Toast.LENGTH_SHORT).show();
-		}else{
-			Toast.makeText(context, "操作失败！", Toast.LENGTH_SHORT).show();
-		}
 	}
 
 	/**
@@ -58,11 +53,15 @@ public class BuzzerControlTask extends AsyncTask<Void, Void, Void> {
 	 */
 	@Override
 	protected Void doInBackground(Void... params) {
+		String smoke,tem,hum;
 		try {
 			while (true){
-				if ((tv_smoke.getText().toString().equals("连接中")||Integer.parseInt(tv_smoke.getText().toString())<=30)
-						&&(tv_tem.getText().toString().equals("连接中")||Integer.parseInt(tv_tem.getText().toString())<=25)
-						//&&(tv_hum.getText().toString().equals("连接中")||Integer.parseInt(tv_hum.getText().toString())<=27)
+				smoke = tv_smoke.getText().toString();
+				tem = tv_tem.getText().toString();
+				hum = tv_hum.getText().toString();
+				if ((smoke.equals("连接中")||(Integer.parseInt(smoke)<=Constant.smoke_up&&Integer.parseInt(smoke)>=Constant.smoke_down))
+						&&(tem.equals("连接中")||(Integer.parseInt(tem)<=Constant.tem_up&&Integer.parseInt(tem)>=Constant.tem_down))
+						&&(hum.equals("连接中")||(Integer.parseInt(hum)<=Constant.hum_up&&Integer.parseInt(hum)>=Constant.hum_down))
 					) continue;
 				// 发送命令
 				Log.d("tag","buzzer");
@@ -73,7 +72,7 @@ public class BuzzerControlTask extends AsyncTask<Void, Void, Void> {
 				// 如果设备无返回值，直接返回null
 				if(read_buff==null || read_buff.length<Constant.NODE_LEN) return null;
 				//判断是否操作成功
-				statu = FROIOControl.isSuccess(Constant.NODE_LEN, Constant.NODE_NUM, read_buff);
+				//statu = FROIOControl.isSuccess(Constant.NODE_LEN, Constant.NODE_NUM, read_buff);
 				// 更新界面
 				publishProgress();
 				Thread.sleep(1000);

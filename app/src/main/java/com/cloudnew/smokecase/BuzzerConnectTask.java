@@ -28,12 +28,12 @@ public class BuzzerConnectTask extends AsyncTask<Void, Void, Void> {
 	private SocketAddress mSocketAddress;
 	private static InputStream inputStream;
 	private static OutputStream outputStream;
-
+	private Boolean CIRCLE = false;
 	private Boolean STATU = false;
 
 	public BuzzerConnectTask(Context context, Button btn) {
 		this.context = context;
-		this.btn = btn;
+		//this.btn = btn;
 	}
 
 	/**
@@ -41,7 +41,7 @@ public class BuzzerConnectTask extends AsyncTask<Void, Void, Void> {
 	 */
 	@Override
 	protected void onProgressUpdate(Void... values) {
-		btn.setText(btn_text);
+		//btn.setText(btn_text);
 	}
 
 	/**
@@ -63,7 +63,7 @@ public class BuzzerConnectTask extends AsyncTask<Void, Void, Void> {
 		mSocketAddress = new InetSocketAddress(Constant.BUZZER_IP, Constant.BUZZER_port);
 		try {
 			// socket连接
-			while(!isSuccess()){
+			while(!isSuccess()&&CIRCLE){
 				if (mSocket!=null) {
 					try {
 						mSocket.close();
@@ -133,12 +133,8 @@ public class BuzzerConnectTask extends AsyncTask<Void, Void, Void> {
 		return outputStream;
 	}
 
-	public Boolean getSTATU() {
-		return STATU;
-	}
-
-	public void setSTATU(Boolean sTATU) {
-		STATU = sTATU;
+	public void setCIRCLE(Boolean cIRCLE) {
+		CIRCLE = cIRCLE;
 	}
 
 }

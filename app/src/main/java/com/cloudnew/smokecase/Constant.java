@@ -9,6 +9,8 @@ public class Constant {
 	public static String SMOKE_CHK="01 03 00 34 00 01 c5 c4";
 	public static int SMOKE_LEN=7;
 	public static int SMOKE_NUM=1;
+	public static int smoke_up = 30;
+	public static int smoke_down = 0;
 
 
 	//温湿度查询命令
@@ -17,6 +19,10 @@ public class Constant {
 	public static String TEMHUM_CHK="01 03 00 14 00 02 84 0f";
 	public static int TEMHUM_LEN=9;
 	public static int TEMHUM_NUM=1;
+	public static int tem_up = 25;
+	public static int tem_down = 0;
+	public static int hum_up = 30;
+	public static int hum_down = 15;
 
 
 	//蜂鸣器
