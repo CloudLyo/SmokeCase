@@ -155,10 +155,14 @@
                 android:layout_width="match_parent"
                 android:layout_height="2dp"
                 android:background="#DDDDDD"/>
-
+            <lecho.lib.hellocharts.view.LineChartView
+                android:id="@+id/line_chart"
+                android:layout_width="match_parent"
+                android:layout_height="300dp"
+                android:layout_marginTop="20dp"/>
         </LinearLayout>
         <LinearLayout
-            android:layout_width="300dp"
+            android:layout_width="320dp"
             android:layout_height="match_parent"
             android:layout_gravity="left"
             android:orientation="vertical"
@@ -240,7 +244,7 @@
                     android:textSize="20sp"/>
                 <EditText
                     android:id="@+id/etv_smoke_down"
-                    android:layout_width="40dp"
+                    android:layout_width="50dp"
                     android:layout_height="wrap_content"
                     android:gravity="center_horizontal"/>
                 <TextView
@@ -250,7 +254,7 @@
                     android:textSize="20sp"/>
                 <EditText
                     android:id="@+id/etv_smoke_up"
-                    android:layout_width="40dp"
+                    android:layout_width="50dp"
                     android:layout_height="wrap_content"
                     android:gravity="center_horizontal"/>
             </LinearLayout>
@@ -264,7 +268,7 @@
                     android:textSize="20sp"/>
                 <EditText
                     android:id="@+id/etv_tem_down"
-                    android:layout_width="40dp"
+                    android:layout_width="50dp"
                     android:layout_height="wrap_content"
                     android:gravity="center_horizontal"/>
                 <TextView
@@ -274,7 +278,7 @@
                     android:textSize="20sp"/>
                 <EditText
                     android:id="@+id/etc_tem_up"
-                    android:layout_width="40dp"
+                    android:layout_width="50dp"
                     android:layout_height="wrap_content"
                     android:gravity="center_horizontal"/>
                 <TextView
@@ -282,10 +286,10 @@
                     android:layout_height="wrap_content"
                     android:text="湿度:"
                     android:textSize="20sp"
-                    android:layout_marginLeft="20dp"/>
+                    android:layout_marginLeft="10dp"/>
                 <EditText
                     android:id="@+id/etv_hum_down"
-                    android:layout_width="40dp"
+                    android:layout_width="50dp"
                     android:layout_height="wrap_content"
                     android:gravity="center_horizontal"/>
                 <TextView
@@ -295,7 +299,7 @@
                     android:textSize="20sp"/>
                 <EditText
                     android:id="@+id/etv_hum_up"
-                    android:layout_width="40dp"
+                    android:layout_width="50dp"
                     android:layout_height="wrap_content"
                     android:gravity="center_horizontal"/>
             </LinearLayout>
